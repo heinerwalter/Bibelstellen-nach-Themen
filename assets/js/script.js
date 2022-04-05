@@ -5,6 +5,17 @@ window.onload = function() {
 	let isTwoColumns = contentElement?.classList.contains('two-columns') || false;
 	const inputTwoColumnsElement = document.getElementById('input-two-columns');
 	if (inputTwoColumnsElement) inputTwoColumnsElement.checked = inputTwoColumnsElement;
+
+	// Get URL query parameters:
+	const params = new Proxy(new URLSearchParams(window.location.search), {
+		get: (searchParams, prop) => searchParams.get(prop),
+	});
+	// Load excel file with given URL
+	let excelFile = params.excelfile;
+	if (!!excelFile) {
+		// TODO
+		alert("Load " + excelFile);
+	}
 };
 
 
