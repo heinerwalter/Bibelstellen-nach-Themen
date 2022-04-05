@@ -1,0 +1,57 @@
+/* control-area layout */
+#control-area {
+}
+
+#control-area .control-area-content {
+	display: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#control-area[data-control-area-content="import"] #control-area-import,
+#control-area[data-control-area-content="filter"] #control-area-filter {
+	display: block;
+}
+
+.control-area-content > * {
+	display: inline-block;
+}
+#control-area #button-excel-file-reset {
+	float: right;
+}
+
+
+
+#content {
+}
+
+
+
+/* For screen: */
+@media screen {
+	/* style (only visible on screen) */
+	#control-area {
+		/* layout */
+		display: block;
+		position: relative;
+		/*width: 100%;*/
+		left: 0;
+		top: 0;
+		padding: 0.5rem 0.7rem;
+		/* color */
+		background-color: lightgray;
+	}
+	#control-area:not([data-control-area-content]),
+	#control-area[data-control-area-content=""] {
+		display: none;
+	}
+}
+
+
+
+/* For print: */
+@media print {
+	#control-area {
+		display: none !important;
+	}
+}

@@ -1,0 +1,9 @@
+/* Filter topics by name */
+.title-topic,
+.bible-passage {
+	display: none;
+}
+/*.title-topic[data-topic="Vertrauen"],*/
+.bible-passage[data-topics*=",Vertrauen,"] {
+	display: inherit;
+}

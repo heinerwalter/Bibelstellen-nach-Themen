@@ -1,0 +1,267 @@
+/* definitions */
+:root {
+	--font-family-sans-serif: Neris, Calibri, "Helvetica Neue", Arial, Helvetica, sans-serif;
+	--font-family-serif: Aleo, Cambria, "Times New Roman", Times, serif;
+	--list-indent: 1.5rem;
+}
+
+
+
+/* size and margin */
+* {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+p, h1, h2, h3, h4, h5, h6 {
+	margin-top: 3pt;
+	margin-bottom: 3pt;
+}
+.title,
+.title-bible-passage-list {
+	margin-bottom: 10pt;
+}
+.bible-passage {
+	margin-bottom: 3pt;
+}
+
+/* font-family etc. */
+h1, h2, h3, h4, h5, h6, .h {
+	font-family: var(--font-family-sans-serif);
+	font-weight: 600;
+	text-align: left;
+	line-height: 1;
+	line-height: 1.4;
+}
+h1 {
+	font-weight: bold;
+}
+p, .p, li,
+form, input, select, textarea, button {
+	font-family: var(--font-family-serif);
+	font-weight: normal;
+	text-align: justify;
+	line-height: 1.35;
+}
+
+/* style classes */
+.underline {
+	text-decoration: underline;
+}
+
+
+
+/* lists (with arrow icon) */
+ul {
+	list-style: none;
+    padding-left: var(--list-indent);
+}
+ul li:before {
+	margin-left: calc(-1 * var(--list-indent));
+}
+ul li:before,
+.title-topic ~ .bible-passage .title-reference:before {
+	content: "\2192"; /* arrow to the right */
+	display: inline-block;
+	width: var(--list-indent);
+	font-family: var(--font-family-sans-serif);
+}
+.title-topic ~ .bible-passage .text {
+	margin-left: var(--list-indent);
+}
+.title-topic ~ .bible-passage + .comment-list {
+	margin-left: var(--list-indent);
+}
+
+
+
+/* form elements */
+input, select {
+	border: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	font-family: var(--font-family-serif);
+	font-weight: inherit;
+	font-style: inherit;
+}
+
+
+
+/* main .title */
+.title {
+}
+
+
+
+/* .topic */
+.title-topic, .topic {
+	font-weight: 600;
+}
+
+
+
+/* .bible-passage */
+.bible-passages {
+}
+.bible-passage {
+}
+.bible-passage .title-reference {
+	font-weight: 600;
+}
+.bible-passage .title-reference .reference,
+.bible-passage .title-reference .topics-secondary {
+}
+.bible-passage .reference {
+}
+.bible-passage .reference span.reference-border,
+.reference span.reference-border {
+	display: inline-block;
+	border: 1px solid black;
+	padding: 0em 0.3em 0.1em;
+	margin-right: 0.3em;
+}
+.bible-passage .translation {
+	font-weight: normal;
+}
+.bible-passage .translation:empty {
+	display: none;
+}
+.bible-passage .translation:before {
+	content: "(";
+}
+.bible-passage .translation:after {
+	content: ")";
+}
+.bible-passage .topics-secondary {
+	float: right;
+	text-align: right;
+	font-weight: normal;
+	font-style: italic;
+
+	padding-top: 0.2em;
+	font-size: 80%;
+}
+.bible-passage .topics-secondary:not(:empty):before {
+	content: "Weitere Themen: ";
+}
+.bible-passage .text {
+	clear: both;
+}
+.bible-passage .text .verse-number {
+	vertical-align: super;
+	font-size: 60%;
+}
+.bible-passage .notes {
+	display: none;
+}
+
+
+
+/* .comment */
+.comment {
+	font-family: var(--font-family-sans-serif);
+	/* font-style: italic; */
+	font-weight: 200;
+}
+.comment strong, .comment b, .comment .bold {
+	font-weight: 600;
+}
+.comment-list {
+}
+.comment-list .comment-list-item {
+}
+
+
+
+/* .bible-passage-list */
+.bible-passage-list {
+}
+.title-bible-passage-list .title:not(:empty) + .date:before {
+	content: '(';
+	margin-left: 1ex;
+}
+.title-bible-passage-list .title:not(:empty) + .date:after {
+	content: ')';
+}
+
+
+
+/* [data-filter] */
+#content[data-filter-topic] {
+}
+
+#content[data-filter-list] {
+}
+#title-bible-passage-list {
+	display: none;
+}
+#content[data-filter-list] > #title-default {
+	display: none;
+}
+#content[data-filter-list] > #title-bible-passage-list {
+	display: block;
+}
+
+
+
+/* For screen: */
+@media screen {
+
+	/* size and margin */
+	body {
+		margin: 0;
+	}
+	#content {
+		margin: 1.5cm;
+	}
+
+	/* font-size */
+	* {
+		font-size: 12pt;
+	}
+	.title {
+		font-size: 16pt;
+	}
+	.title .date {
+		font-size: 12pt;
+	}
+	.title-topic, .topic,
+	.bible-passage .title-topic, .bible-passage .topic {
+		font-size: 14pt;
+	}
+
+}
+
+
+/* For print: */
+@media print {
+	.no-print {
+		display: none !important;
+	}
+
+	/* size and margin */
+	body {
+		/*max-width: 19cm;
+		margin: 1cm;*/
+		margin: 0;
+	}
+	#content {
+		margin: 0;
+		padding: 0;
+	}
+
+	/* font-size */
+	* {
+		font-size: 10pt;
+	}
+	.title {
+		font-size: 14pt;
+	}
+	.title .date {
+		font-size: 10pt;
+	}
+	.title-topic, .topic,
+	.bible-passage .title-topic, .bible-passage .topic {
+		font-size: 12pt;
+	}
+}

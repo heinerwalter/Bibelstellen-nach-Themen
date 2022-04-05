@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<title>Bibelstellen zum Proklamieren</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="assets/style.css"/>
+	<link rel="stylesheet" href="assets/two-columns.css"/>
+	<link rel="stylesheet" href="assets/control-area.css"/>
+</head>
+
+<body>
+	<div id="control-area" class="no-print" data-control-area-content="import">
+		<label for="input-excel-file" id="control-area-import" class="control-area-content">
+			<div id="table-excel-container"></div>
+			<h3><label for="input-excel-file">Excel-Datei importieren: </label></h3>
+			<input type="file" id="input-excel-file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onchange="return excelFileInputChanged(event);" />
+		</label>
+		<div id="control-area-filter" class="control-area-content">
+			<select name="topic" id="input-filter-topic" onchange="return filterTopicInputChanged(event);">
+				<option value="">-- Nach Thema filtern --</option>
+			</select>
+			<select name="list" id="input-filter-list" onchange="return filterListInputChanged(event);">
+				<option value="">-- Liste anzeigen --</option>
+			</select>
+			<input type="checkbox" id="input-two-columns" onchange="return layoutTwoColumnsChanged(event);"></input>
+			<label for="input-two-columns">columns</label>
+			<button id="button-excel-file-reset" onclick="return excelFileResetClicked(event);">Reset</button>
+		</div>
+	</div>
+
+	<div id="content" class="two-columns">
+		<h1 id="title-default" class="title">Bibelstellen zum Proklamieren</h1>
+		<div id="bible-passages" class="bible-passages">
+		</div>
+	</div>
+
+	<script src="assets/biblepassage.js" async></script>
+	<script src="assets/biblepassagelist.js" async></script>
+	<script src="assets/script.js" async></script>
+	<!-- <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js" async></script> -->
+	<script src="assets/xlsx.full.min.js" async></script>
+</body>
+
+</html>

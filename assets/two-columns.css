@@ -1,0 +1,38 @@
+/* multi column layout */
+#content.two-columns #bible-passages {
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+}
+h1, h2, h3, h4, h5, h6, .h {
+	break-after: avoid;
+}
+
+
+
+/* For screen: */
+@media screen {
+
+	/* size and margin with columns */
+	#content.two-columns #bible-passages {
+		-webkit-column-gap: 1cm;
+		-moz-column-gap: 1cm;
+		column-gap: 1cm;
+	}
+}
+
+
+
+/* For print: */
+@media print {
+
+	/* size and margin with columns */
+	#content.two-columns #bible-passages {
+		/*max-width: 20cm;
+		margin: 0.5cm;*/
+
+		-webkit-column-gap: 0.5cm;
+		-moz-column-gap: 0.5cm;
+		column-gap: 0.5cm;
+	}
+}
