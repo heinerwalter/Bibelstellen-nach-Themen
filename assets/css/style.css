@@ -1,10 +1,10 @@
 /* fonts */
-@font-face { font-family: Aleo; font-weight: 300; src: url('fonts/Aleo-Light.ttf'); }
-@font-face { font-family: Aleo; font-weight: 300; font-style: italic; src: url('fonts/Aleo-LightItalic.ttf'); }
-@font-face { font-family: Aleo; font-weight: 400; src: url('fonts/Aleo-Regular.ttf'); }
-@font-face { font-family: Aleo; font-weight: 400; font-style: italic; src: url('fonts/Aleo-Italic.ttf'); }
-@font-face { font-family: Aleo; font-weight: 700; src: url('fonts/Aleo-Bold.ttf'); }
-@font-face { font-family: Aleo; font-weight: 700; font-style: italic; src: url('fonts/Aleo-BoldItalic.ttf'); }
+@font-face { font-family: Aleo; font-weight: 300; src: url('../fonts/Aleo-Light.ttf'); }
+@font-face { font-family: Aleo; font-weight: 300; font-style: italic; src: url('../fonts/Aleo-LightItalic.ttf'); }
+@font-face { font-family: Aleo; font-weight: 400; src: url('../fonts/Aleo-Regular.ttf'); }
+@font-face { font-family: Aleo; font-weight: 400; font-style: italic; src: url('../fonts/Aleo-Italic.ttf'); }
+@font-face { font-family: Aleo; font-weight: 700; src: url('../fonts/Aleo-Bold.ttf'); }
+@font-face { font-family: Aleo; font-weight: 700; font-style: italic; src: url('../fonts/Aleo-BoldItalic.ttf'); }
 
 /* definitions */
 :root {
