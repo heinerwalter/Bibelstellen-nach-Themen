@@ -62,6 +62,26 @@ function findBiblePassage(biblePassages, reference) {
 }
 
 
+function sortBiblePassages(biblePassages = [], by = 'topic') {
+	switch (expression) {
+		case 'topic':
+			return sortBiblePassagesByTopic(biblePassages);
+		default:
+			return biblePassages;
+	}
+}
+
+function sortBiblePassagesByTopic(biblePassages = []) {
+	biblePassages.sort(function(a, b) {
+		var nameA = a.topicPrimary;
+		var nameB = b.topicPrimary;
+		if (nameA < nameB) return -1;
+		if (nameA > nameB) return 1;
+		return 0;
+	});
+	return biblePassages;
+}
+
 
 /* Update page */
 

@@ -213,6 +213,7 @@ function excelFileLoaded(workbook) {
 			biblePassages.push(biblePassage);
 		}
 	}
+	sortBiblePassages(biblePassages, 'topic');
 
 	// Read all bible passage lists from excel
 	biblePassageLists = [];
