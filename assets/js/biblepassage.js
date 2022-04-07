@@ -16,22 +16,27 @@ class BiblePassage {
 	}
 
 	topicsAll() {
-		var str = (this.topicPrimary || '').trim();
+		const set = new Set();
+		var t = (this.topicPrimary || '').trim();
+		if (t) set.add(t);
 		if (!!this.topicsSecondary) {
-			var array = this.topicsSecondary.split(',');
-			for (var i = 0; i < array.length; i++) {
-				array[i] = array[i].trim();
-				if (!array[i]) continue;
-				if (str) str = str + ',';
-				str = str + array[i];
+			var topicsSecondaryArray = this.topicsSecondary.split(',');
+			for (var i = 0; i < topicsSecondaryArray.length; i++) {
+				t = topicsSecondaryArray[i].trim();
+				if (!t) continue;
+				set.add(t);
 			}
 		}
-		return str;
+		return Array.from(set);
+	}
+
+	topicsAllString() {
+		this.topicsAll().join(',');
 	}
 
 	toHTML() {
 		var text = (this.text || '').replaceAll(/([0-9]+)/g, '<span class="verse-number">$1</span>');
-		return `		<div class="bible-passage" id="${this.referenceShort}" data-topic="${this.topicPrimary}" data-topics=",${this.topicsAll()}," data-translation="${this.translation}" data-rating="${this.rating}" data-is-card="${this.isCard}" data-date="${this.date?.toDateString() || ''}">
+		return `		<div class="bible-passage" id="${this.referenceShort}" data-topic="${this.topicPrimary}" data-topics=",${this.topicsAllString()}," data-translation="${this.translation}" data-rating="${this.rating}" data-is-card="${this.isCard}" data-date="${this.date?.toDateString() || ''}">
 			<h3 class="title-reference"><span class="reference"><span class="reference-border">${this.reference}</span><span class="translation">${this.translation}</span></span><span class="topics-secondary">${this.topicsSecondary}</span></h3>
 			<p class="text">${text}</p>
 		</div>
