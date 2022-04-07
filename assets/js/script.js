@@ -16,7 +16,12 @@ window.onload = function() {
 	if (excelFile && excelFileInputElement) {
 		// TODO
 		//alert("Load " + excelFile);
-		excelFileInputElement.value = excelFile;
+		// Fetch data of file from URL
+		fetch(excelFile)
+			.then(res => res.blob())
+			.then(blob => {
+				excelFileInputProcess(blob);
+			});
 	}
 };
 
@@ -136,6 +141,7 @@ function excelFileInputChanged(event) {
 
 	if (!event.target || !event.target.files || !event.target.files.length) return;
 	let file = event.target.files[0];
+	
 	// Read selected file data
 	let reader = new FileReader();
 	reader.onload = function() {
