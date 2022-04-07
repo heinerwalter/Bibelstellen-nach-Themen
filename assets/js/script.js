@@ -141,17 +141,24 @@ function excelFileInputChanged(event) {
 	reader.onload = function() {
 		let data = reader.result;
 		// Read excel file using the xlsx js library (https://www.npmjs.com/package/xlsx)
-		let workbook = XLSX.readFile(data);
-		if (!workbook) {
+		if (!excelFileInputProcess(data)) {
 			event.target.value = null;
 			return;
 		}
-		excelFileLoaded(workbook);
 	};
 	reader.onerror = function() {
 		event.target.value = null;
 	}
 	reader.readAsArrayBuffer(file);
+}
+
+function excelFileInputProcess(fileData) {
+	if (!fileData) return false;
+	// Read excel file using the xlsx js library (https://www.npmjs.com/package/xlsx)
+	const workbook = XLSX.readFile(fileData);
+	if (!workbook) return false;
+	excelFileLoaded(workbook);
+	return true;
 }
 
 function excelFileResetClicked(event) {
