@@ -12,9 +12,11 @@ window.onload = function() {
 	});
 	// Load excel file with given URL
 	let excelFile = params.excelfile;
-	if (!!excelFile) {
+	const excelFileInputElement = document.getElementById('input-excel-file');
+	if (excelFile && excelFileInputElement) {
 		// TODO
-		alert("Load " + excelFile);
+		//alert("Load " + excelFile);
+		excelFileInputElement.value = excelFile;
 	}
 };
 
