@@ -49,10 +49,33 @@ class BiblePassage {
 	}
 }
 
+
 function topicToHTML(topic) {
 	return `		<h2 class="title-topic topic" data-topic="${topic}">${topic}</h2>
 `
 }
+
+function biblePassagesToHTML(biblePassages = []) {
+	let html = '';
+	let lastTopic = '';
+	
+	for (let i = 0; i < biblePassages.length; i++) {
+		const biblePassage = biblePassages[i];
+
+		// Add topic
+		if (!!biblePassage.topicPrimary &&
+		    (!lastTopic || lastTopic !== biblePassage.topicPrimary)) {
+			html += biblePassage.topicToHTML();
+		}
+		lastTopic = biblePassage.topicPrimary;
+
+		// Add bible passage
+		html += biblePassage.toHTML();
+	}
+
+	return html;	
+}
+
 
 function findBiblePassage(biblePassages, reference) {
 	for (let i = 0, biblePassage; biblePassage = biblePassages[i]; i++) {
@@ -89,30 +112,16 @@ function updateBiblePassagesContainer(biblePassages = []) {
 	let biblePassagesContainerElement = document.getElementById('bible-passages');
 	if (!biblePassagesContainerElement) return;
 
-	// Clear old content
-	biblePassagesContainerElement.innerHTML = '';
+	// Fill container with bible passages
+	biblePassagesContainerElement.innerHTML = biblePassagesToHTML(biblePassages);
 
-	// Fill with given data
-	var lastTopic = '';
+	// Search for all topics of all bible passages
 	var allTopics = [];
 	for (var i = 0; i < biblePassages.length; i++) {
-		let biblePassage = biblePassages[i];
-
-		// Add topic
-		if (!!biblePassage.topicPrimary &&
-		    (!lastTopic || lastTopic !== biblePassage.topicPrimary)) {
-			biblePassagesContainerElement.innerHTML += biblePassage.topicToHTML();
-		}
-		lastTopic = biblePassage.topicPrimary;
-		if (!allTopics.includes(biblePassage.topicPrimary)) {
-			allTopics.push(biblePassage.topicPrimary);
-		}
-
-		// Add bible passage
-		biblePassagesContainerElement.innerHTML += biblePassage.toHTML();
+		Array.prototype.push.apply(allTopics, biblePassages[i].topicsAll());
 	}
-	
-	populateInputFilterTopics(allTopics);
+	// Fill filter input with topics
+	populateInputFilterTopics(Array.from(new Set(allTopics)));
 }
 
 function populateInputFilterTopics(topics = []) {
