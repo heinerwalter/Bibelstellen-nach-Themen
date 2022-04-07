@@ -63,7 +63,7 @@ function findBiblePassage(biblePassages, reference) {
 
 
 function sortBiblePassages(biblePassages = [], by = 'topic') {
-	switch (expression) {
+	switch (by) {
 		case 'topic':
 			return sortBiblePassagesByTopic(biblePassages);
 		default:
