@@ -194,30 +194,6 @@ input, select {
 
 
 
-/* [data-filter] */
-#content[data-filter-topic] {
-}
-
-#content[data-filter-list] {
-}
-#title-bible-passage-list {
-	display: none;
-}
-#content[data-filter-list] > #title-default {
-	display: none;
-}
-#content[data-filter-list] > #title-bible-passage-list {
-	display: block;
-}
-#content[data-filter-list] .bible-passage .topics-secondary {
-	display: none;
-}
-#content[data-filter-list] .bible-passage .text {
-	clear: inherit;
-}
-
-
-
 /* For screen: */
 @media screen {
 
