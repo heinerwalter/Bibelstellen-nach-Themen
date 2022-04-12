@@ -31,7 +31,7 @@ class BiblePassage {
 	}
 
 	topicsAllString() {
-		this.topicsAll().join(',');
+		return this.topicsAll().join(',');
 	}
 
 	toHTML() {
