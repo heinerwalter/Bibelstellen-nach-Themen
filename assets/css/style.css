@@ -209,6 +209,12 @@ input, select {
 #content[data-filter-list] > #title-bible-passage-list {
 	display: block;
 }
+#content[data-filter-list] .bible-passage .topics-secondary {
+	display: none;
+}
+#content[data-filter-list] .bible-passage .text {
+	clear: inherit;
+}
 
 
 
