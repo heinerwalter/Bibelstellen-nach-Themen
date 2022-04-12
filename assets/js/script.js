@@ -52,7 +52,7 @@ function setControlAreaContentFilter() {
 /* filter */
 
 function filterTopics(topic) {
-	// Try to find existing style element for filtering topics
+	/*// Try to find existing style element for filtering topics
 	var styleElement = document.getElementById('filter-topics-by-name');
 	const contentElement = document.getElementById('content');
 	if (styleElement === null) {
@@ -65,12 +65,10 @@ function filterTopics(topic) {
 	// Fill style element with topic filtering rules
 	if (!!topic) {
 		styleElement.innerHTML = `
-			/* Filter topics by name */
 			.bible-passages .title-topic,
 			.bible-passages .bible-passage {
 				display: none;
 			}
-			/*.bible-passages .title-topic[data-topic="` + topic + `"],*/
 			.bible-passages .bible-passage[data-topics*=",` + topic + `,"] {
 				display: inherit;
 			}
@@ -79,7 +77,22 @@ function filterTopics(topic) {
 	} else {
 		styleElement.innerHTML = '';
 		contentElement?.removeAttribute('data-filter-topic');
+	}*/
+
+	// Get content element
+	const contentElement = document.getElementById('content');
+	const biblePassagesElement = document.getElementById('bible-passages');
+	if (!contentElement) return;
+
+	if (!topic) {
+		updateBiblePassagesContainer(biblePassages);
+		contentElement.removeAttribute('data-filter-topic');
+		return;
 	}
+
+	// Replace content elements content by bible passages with the selected topic
+	biblePassagesElement.innerHTML = biblePassagesWithTopicToHTML(topic, biblePassages);
+	contentElement.setAttribute('data-filter-topic', topic);
 }
 
 function filterLists(listIndex) {

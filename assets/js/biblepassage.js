@@ -34,10 +34,24 @@ class BiblePassage {
 		return this.topicsAll().join(',');
 	}
 
-	toHTML() {
+	toHTML(topicPrimary = null) {
+		/**
+		 * Define parameter `topicPrimary` to replace `this.topicPrimary`.
+		 */
+		let topicsSecondary;
+		if (!topicPrimary) {
+			topicPrimary = this.topicPrimary;
+			topicsSecondary = this.topicsSecondary;
+		} else {
+			topicsSecondary = this.topicsAll().filter(function(value, index, arr) {
+				return value !== topicPrimary;
+			}).join(', ');
+		}
+
 		var text = (this.text || '').replaceAll(/([0-9]+)/g, '<span class="verse-number">$1</span>');
-		return `		<div class="bible-passage" id="${this.referenceShort}" data-topic="${this.topicPrimary}" data-topics=",${this.topicsAllString()}," data-translation="${this.translation}" data-rating="${this.rating}" data-is-card="${this.isCard}" data-date="${this.date?.toDateString() || ''}">
-			<h3 class="title-reference"><span class="reference"><span class="reference-border">${this.reference}</span><span class="translation">${this.translation}</span></span><span class="topics-secondary">${this.topicsSecondary}</span></h3>
+
+		return `		<div class="bible-passage" id="${this.referenceShort}" data-topic="${topicPrimary}" data-topics=",${this.topicsAllString()}," data-translation="${this.translation}" data-rating="${this.rating}" data-is-card="${this.isCard}" data-date="${this.date?.toDateString() || ''}">
+			<h3 class="title-reference"><span class="reference"><span class="reference-border">${this.reference}</span><span class="translation">${this.translation}</span></span><span class="topics-secondary">${topicsSecondary}</span></h3>
 			<p class="text">${text}</p>
 		</div>
 `
@@ -71,6 +85,28 @@ function biblePassagesToHTML(biblePassages = []) {
 
 		// Add bible passage
 		html += biblePassage.toHTML();
+	}
+
+	return html;	
+}
+
+function biblePassagesWithTopicToHTML(topic, biblePassages = []) {
+	/**
+	 * Filter topics:
+	 * Return only bible passages containing the given topic.
+	 */
+	if (!topic) return '';
+	let html = topicToHTML(topic);
+	
+	for (let i = 0; i < biblePassages.length; i++) {
+		const biblePassage = biblePassages[i];
+
+		// Get all topics and compare with given one
+		const topics = biblePassage.topicsAll();
+		if (!topics.includes(topic)) continue;
+
+		// Add bible passage
+		html += biblePassage.toHTML(topic);
 	}
 
 	return html;	
