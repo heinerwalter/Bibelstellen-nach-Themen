@@ -16,6 +16,12 @@
 .control-area-content > * {
 	display: inline-block;
 }
+#control-area #button-decrease-size {
+	font-size: smaller;
+}
+#control-area #button-increase-size {
+	font-size: larger;
+}
 #control-area #button-excel-file-reset {
 	float: right;
 }

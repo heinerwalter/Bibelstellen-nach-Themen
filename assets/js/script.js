@@ -180,6 +180,22 @@ function excelFileInputProcess(fileData) {
 	return true;
 }
 
+zoomFactor = 1.0;
+
+function decreaseFontSizeClicked(event) {
+	if (!!event) event.preventDefault();
+
+	zoomFactor -= 0.1;
+	document.body.style.zoom = zoomFactor;
+}
+
+function increaseFontSizeClicked(event) {
+	if (!!event) event.preventDefault();
+
+	zoomFactor += 0.1;
+	document.body.style.zoom = zoomFactor;
+}
+
 function excelFileResetClicked(event) {
 	if (!!event) event.preventDefault();
 
