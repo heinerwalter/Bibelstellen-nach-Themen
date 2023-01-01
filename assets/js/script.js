@@ -327,7 +327,7 @@ const excelBiblePassageColumnIndices = {
 	reference: {i: 33, title: 'Referenz (bereinigt)', default: ''},
 	text: {i: 5, title: 'Text', default: ''},
 	translation: {i: 6, title: 'Übersetzung', default: ''},
-	topicPrimary: {i: 7, title: 'Primäres Thema', default: ''},
+	topicPrimary: {i: 13, title: 'Thema (ohne Nummer)', default: ''},
 	topicsSecondary: {i: 8, title: 'Weitere Themen', default: ''},
 	notes: {i: 10, title: 'Notizen', default: ''},
         favoritesInYear: {i: 11, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToIntArray(value)},
