@@ -20,7 +20,7 @@
 #content[data-filter-list] > #title-bible-passage-list {
 	display: block;
 }
-#content[data-filter-list] .bible-passage .topics-secondary {
+#content[data-filter-list].hide-topics .bible-passage .topics-secondary {
 	display: none;
 }
 

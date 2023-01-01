@@ -112,7 +112,7 @@ function biblePassageListContentLineToHTML(contentLine) {
 			return {html: topicToHTML(value)};
 		case 'reference': 
 			const biblePassage = findBiblePassage(biblePassages, value);
-			return {html: biblePassage?.toHTML() || ''};
+			return {html: biblePassage?.toHTML(undefined, false) || ''};
 		case 'comment':
 			return {html: `		<p class="comment">${markdownToHtml(value)}</p>
 `};

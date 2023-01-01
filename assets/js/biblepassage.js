@@ -37,12 +37,15 @@ class BiblePassage {
 		return this.topicsAll().join(',');
 	}
 
-	toHTML(topicPrimary = null) {
+	toHTML(topicPrimary = null, excludeTopicPrimary = true) {
 		/**
 		 * Define parameter `topicPrimary` to replace `this.topicPrimary`.
 		 */
 		let topicsSecondary;
-		if (!topicPrimary) {
+		if (!excludeTopicPrimary) {
+                        topicPrimary = '';
+			topicsSecondary = this.topicsAll().join(', ');
+		} else if (!topicPrimary) {
 			topicPrimary = this.topicPrimary;
 			topicsSecondary = this.topicsSecondary;
 		} else {
