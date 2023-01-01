@@ -324,7 +324,7 @@ const excelBiblePassageColumnIndices = {
 	topicPrimary: {i: 7, title: 'Primäres Thema', default: ''},
 	topicsSecondary: {i: 8, title: 'Weitere Themen', default: ''},
 	notes: {i: 10, title: 'Notizen', default: ''},
-        favoritesInYear: {i: 11, title: 'Favoriten im Jahr' converter: (value) => excelCommaSeparatedStringToArray(value)},
+        favoritesInYear: {i: 11, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToArray(value)},
         orderTopic: {i: 16, title: 'Reihenfolge (Thema)', default: 999999},
         orderBible: {i: 32, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
 };
