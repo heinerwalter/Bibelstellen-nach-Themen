@@ -13,6 +13,9 @@ class BiblePassage {
 		this.topicPrimary = '';
 		this.topicsSecondary = '';
 		this.notes = '';
+                this.favoritesInYear = [];
+                this.orderTopic = 999999;
+                this.orderBible = 999999999;
 	}
 
 	topicsAll() {

@@ -259,40 +259,46 @@ function excelFileLoaded(workbook) {
 	setControlAreaContentFilter();
 }
 
-function excelCommaSeparatedStringToArray(text) {
-	if (!text?.trim()) return [];
+function excelCommaSeparatedStringToStringArray(value) {
+	if (!value) return [];
+        if (typeof value != 'string') return [value.toString()];
         return text.split(',')
 		.map(i => i.trim())
 		.filter(i => !!i);
 }
 
+function excelCommaSeparatedStringToIntArray(value) {
+	const array = excelCommaSeparatedStringToStringArray(value);
+        return array.map(i => parseInt(i));
+}
+
 function excelDateToJSDate(serial) {
-   var utc_days  = Math.floor(serial - 25569);
-   var utc_value = utc_days * 86400;                                        
-   var date_info = new Date(utc_value * 1000);
+	var utc_days  = Math.floor(serial - 25569);
+	var utc_value = utc_days * 86400;                                        
+	var date_info = new Date(utc_value * 1000);
 
-   var fractional_day = serial - Math.floor(serial) + 0.0000001;
-   var total_seconds = Math.floor(86400 * fractional_day);
-   var seconds = total_seconds % 60;
-   total_seconds -= seconds;
+	var fractional_day = serial - Math.floor(serial) + 0.0000001;
+	var total_seconds = Math.floor(86400 * fractional_day);
+	var seconds = total_seconds % 60;
+	total_seconds -= seconds;
 
-   var hours = Math.floor(total_seconds / (60 * 60));
-   var minutes = Math.floor(total_seconds / 60) % 60;
+	var hours = Math.floor(total_seconds / (60 * 60));
+	var minutes = Math.floor(total_seconds / 60) % 60;
 
-   return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
+	return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
 }
 
 /**
  * @param worksheet
- *     The excel worksheet object.
+ *        The excel worksheet object.
  * @param object
- *     The object to be filled from excel data.
+ *        The object to be filled from excel data.
  * @param indicesDefinition
- *     indicesDefinition = {key: {i: 1, default: ''}, ...} or
- *     indicesDefinition = {key: {i: 1, converter: (value) => ...}, ...}
+ *        indicesDefinition = {key: {i: 1, default: ''}, ...} or
+ *        indicesDefinition = {key: {i: 1, converter: (value) => ...}, ...}
  * @param cellAddressFunction
- *     A function receiving an excel row or column index number and returning a cell address. E.g.:
- *     cellAddressFunction = (index) => XLSX.utils.encode_cell({c: index - 1, r: row + excelBiblePassageRowOffset})
+ *        A function receiving an excel row or column index number and returning a cell address. E.g.:
+ *        cellAddressFunction = (index) => XLSX.utils.encode_cell({c: index - 1, r: row + excelBiblePassageRowOffset})
  */
 function excelReadIndex(worksheet, object, indicesDefinition, cellAddressFunction) {
 	for (key in indicesDefinition) {
@@ -324,7 +330,7 @@ const excelBiblePassageColumnIndices = {
 	topicPrimary: {i: 7, title: 'Primäres Thema', default: ''},
 	topicsSecondary: {i: 8, title: 'Weitere Themen', default: ''},
 	notes: {i: 10, title: 'Notizen', default: ''},
-        favoritesInYear: {i: 11, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToArray(value)},
+        favoritesInYear: {i: 11, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToIntArray(value)},
         orderTopic: {i: 16, title: 'Reihenfolge (Thema)', default: 999999},
         orderBible: {i: 32, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
 };
