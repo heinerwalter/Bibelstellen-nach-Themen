@@ -327,12 +327,12 @@ const excelBiblePassageColumnIndices = {
 	reference: {i: 33, title: 'Referenz (bereinigt)', default: ''},
 	text: {i: 5, title: 'Text', default: ''},
 	translation: {i: 6, title: 'Übersetzung', default: ''},
-	topicPrimary: {i: 13, title: 'Thema (ohne Nummer)', default: ''},
+	topicPrimary: {i: 12, title: 'Thema (ohne Nummer)', default: ''},
 	topicsSecondary: {i: 8, title: 'Weitere Themen', default: ''},
-	notes: {i: 10, title: 'Notizen', default: ''},
-        favoritesInYear: {i: 11, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToIntArray(value)},
-        orderTopic: {i: 16, title: 'Reihenfolge (Thema)', default: 999999},
-        orderBible: {i: 32, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
+	notes: {i: 9, title: 'Notizen', default: ''},
+	favoritesInYear: {i: 10, title: 'Favoriten im Jahr', converter: (value) => excelCommaSeparatedStringToIntArray(value)},
+	orderTopic: {i: 16, title: 'Reihenfolge (Thema)', default: 999999},
+	orderBible: {i: 32, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
 };
 const excelBiblePassageRowOffset = 1;
 
