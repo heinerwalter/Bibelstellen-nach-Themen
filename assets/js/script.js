@@ -262,7 +262,7 @@ function excelFileLoaded(workbook) {
 function excelCommaSeparatedStringToStringArray(value) {
 	if (!value) return [];
         if (typeof value != 'string') return [value.toString()];
-        return text.split(',')
+        return value.split(',')
 		.map(i => i.trim())
 		.filter(i => !!i);
 }
