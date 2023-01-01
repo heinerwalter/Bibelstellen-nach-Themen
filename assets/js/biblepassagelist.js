@@ -5,6 +5,7 @@ class BiblePassageList {
 		this.index = index;
 		this.date = 0;
 		this.title = '';
+		this.important = false;
 		/**
 		 * String content values with format:
 		 * - "# topic"

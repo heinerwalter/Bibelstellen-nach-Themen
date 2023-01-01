@@ -353,7 +353,7 @@ function excelReadBiblePassage(worksheet, row) {
 const excelBiblePassageListRowIndices = {
 	date: {i: 1, converter: (value) => !value ? null : excelDateToJSDate(value)},
 	title: {i: 2, default: ''},
-	important: {i: 3, default: ''},
+	important: {i: 3, converter: (value) => typeof value == 'string' ? !!value?.trim() : !!value},
 };
 const excelBiblePassageListFirstRowIndexContent = 4;
 const excelBiblePassageListColumnOffset = 1;
