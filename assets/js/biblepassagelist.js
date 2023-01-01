@@ -22,11 +22,14 @@ class BiblePassageList {
 	}
 	
 	dateAndTitleToString() {
-		if (!this.date)
-			return this.title?.trim() || '';
-		if (!this.title?.trim())
-			return dateToString(this.date);
-		return dateToString(this.date) + ' ' + this.title.trim();
+		const components = [];
+		if (this.important)
+			components.push('!');
+		if (this.date)
+			components.push(dateToString(this.date));
+		if (this.title?.trim())	
+			components.push(this.title.trim());
+		return components.join(' ');
 	}
 
 	titleToHTML() {
