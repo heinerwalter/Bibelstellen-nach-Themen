@@ -149,8 +149,11 @@ input, select {
 	padding-top: 0.2em;
 	font-size: 80%;
 }
-.bible-passage .topics-secondary:not(:empty):before {
+.bible-passage .topics-secondary:not(.topics-all):not(:empty):before {
 	content: "Weitere Themen: ";
+}
+.bible-passage .topics-secondary.topics-all:not(:empty):before {
+	content: "Themen: ";
 }
 .bible-passage .text {
 	clear: both;

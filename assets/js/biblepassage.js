@@ -57,7 +57,7 @@ class BiblePassage {
 		var text = (this.text || '').replaceAll(/([0-9]+)/g, '<span class="verse-number">$1</span>');
 
 		return `		<div class="bible-passage" id="${this.referenceShort}" data-topic="${topicPrimary}" data-topics=",${this.topicsAllString()}," data-translation="${this.translation}" data-rating="${this.rating}" data-is-card="${this.isCard}" data-date="${this.date?.toDateString() || ''}">
-			<h3 class="title-reference"><span class="reference"><span class="reference-border">${this.reference}</span><span class="translation">${this.translation}</span></span><span class="topics-secondary">${topicsSecondary}</span></h3>
+			<h3 class="title-reference"><span class="reference"><span class="reference-border">${this.reference}</span><span class="translation">${this.translation}</span></span><span class="topics-secondary${!excludeTopicPrimary ? ' topics-all' : ''}">${topicsSecondary}</span></h3>
 			<p class="text">${text}</p>
 		</div>
 `
