@@ -259,6 +259,13 @@ function excelFileLoaded(workbook) {
 	setControlAreaContentFilter();
 }
 
+function excelCommaSeparatedStringToArray(text) {
+	if (!text?.trim()) return [];
+        return text.split(',')
+		.map(i => i.trim())
+		.filter(i => !!i);
+}
+
 function excelDateToJSDate(serial) {
    var utc_days  = Math.floor(serial - 25569);
    var utc_value = utc_days * 86400;                                        
@@ -307,16 +314,19 @@ function excelReadIndex(worksheet, object, indicesDefinition, cellAddressFunctio
 
 
 const excelBiblePassageColumnIndices = {
-	rating: {i: 1, default: 0},
-	isCard: {i: 2, converter: (value) => value === 1},
-	date: {i: 3, converter: (value) => !value ? null : excelDateToJSDate(value)},
-	referenceShort: {i: 4, default: ''},
-	reference: {i: 30, default: ''},
-	text: {i: 5, default: ''},
-	translation: {i: 6, default: ''},
-	topicPrimary: {i: 10, default: ''},
-	topicsSecondary: {i: 8, default: ''},
-	notes: {i: 9, default: ''},
+	rating: {i: 1, title: 'Bewertung', default: 0},
+	isCard: {i: 2, title: 'Karte', converter: (value) => value === 1},
+	date: {i: 3, title: 'seit', converter: (value) => !value ? null : excelDateToJSDate(value)},
+	referenceShort: {i: 4, title: 'Referenz', default: ''},
+	reference: {i: 33, title: 'Referenz (bereinigt)', default: ''},
+	text: {i: 5, title: 'Text', default: ''},
+	translation: {i: 6, title: 'Übersetzung', default: ''},
+	topicPrimary: {i: 7, title: 'Primäres Thema', default: ''},
+	topicsSecondary: {i: 8, title: 'Weitere Themen', default: ''},
+	notes: {i: 10, title: 'Notizen', default: ''},
+        favoritesInYear: {i: 11, title: 'Favoriten im Jahr' converter: (value) => excelCommaSeparatedStringToArray(value)},
+        orderTopic: {i: 16, title: 'Reihenfolge (Thema)', default: 999999},
+        orderBible: {i: 32, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
 };
 const excelBiblePassageRowOffset = 1;
 
