@@ -171,9 +171,10 @@ function excelFileInputChanged(event) {
 	reader.readAsArrayBuffer(file);
 }
 
+/** Read excel file using the xlsx js library (https://www.npmjs.com/package/xlsx). */
 function excelFileInputProcess(fileData) {
 	if (!fileData) return false;
-	// Read excel file using the xlsx js library (https://www.npmjs.com/package/xlsx)
+
 	const workbook = XLSX.readFile(fileData);
 	if (!workbook) return false;
 	excelFileLoaded(workbook);
