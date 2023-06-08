@@ -33,7 +33,8 @@ const excelBiblePassageColumnIndices = {
 	orderTopic: {i: 17, title: 'Reihenfolge (Thema)', default: 999999},
 	orderBible: {i: 33, title: 'Reihenfolge (Bibelstelle)', default: 999999999},
 };
-const excelBiblePassageRowOffset = 1;
+const excelBiblePassageTitleRowIndex = 1;
+const excelBiblePassageContentRowOffset = 1;
 
 
 // Bible Passage Lists:
@@ -44,4 +45,4 @@ const excelBiblePassageListRowIndices = {
 	important: {i: 3, converter: (value) => typeof value == 'string' ? !!value?.trim() : !!value},
 };
 const excelBiblePassageListFirstRowIndexContent = 4;
-const excelBiblePassageListColumnOffset = 1;
+const excelBiblePassageListContentColumnOffset = 1;
