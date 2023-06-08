@@ -5,6 +5,7 @@ class BiblePassage {
 		this.index = index;
 		this.rating = 0;
 		this.isCard = false;
+		this.isWall = false;
 		this.date = null;
 		this.referenceShort = '';
 		this.reference = '';
