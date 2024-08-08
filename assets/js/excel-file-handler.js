@@ -174,7 +174,7 @@ function excelReadBiblePassage(worksheet, row) {
 	var biblePassage = new BiblePassage(row);
 	// Read cells defined by indices dictionary
 	excelReadIndex(worksheet, biblePassage, excelBiblePassageColumnIndices,
-		(index) => XLSX.utils.encode_cell({c: index - 1, r: row + excelBiblePassageContentRowOffset}));
+		(index) => XLSX.utils.encode_cell({c: index, r: row + excelBiblePassageContentRowOffset}));
 
 	if (!biblePassage.referenceShort && !biblePassage.text)
 		return null;
